@@ -1,6 +1,14 @@
 ![https://github.com/blyamur/Montgo/blob/master/montgo/frwl33.png](https://github.com/blyamur/Montgo/blob/master/montgo/frwl33.png)
 
-This WordPress plugin monitors various web requests to your site in order to timely identify and stop the most obvious malicious attacks.
+## WordPress Plugin - WordPress Firewall Re
+
+This WordPress plugin monitors various web requests to your site in order to timely identify and stop the most obvious malicious attacks. 
+
+This is an updated and modified version of the WordPress Firewall plugin, with some bug fixes, adaptation to the latest versions of PHP and WordPress. The general view has also been slightly changed, help has been added and other little things that make working with the plugin more convenient. 
+
+
+#### This version works on PHP version – 8.1 and WordPress 6.1
+
 
 ### Installation Plugin
 
