@@ -1,6 +1,4 @@
-![https://github.com/blyamur/Montgo/blob/master/montgo/frwl33.png](https://github.com/blyamur/Montgo/blob/master/montgo/frwl33.png)
-
-## WordPress Plugin - WordPress Firewall Re
+# WordPress Plugin - WordPress Firewall Re
 
 This WordPress plugin monitors various web requests to your site in order to timely identify and stop the most obvious malicious attacks. 
 
