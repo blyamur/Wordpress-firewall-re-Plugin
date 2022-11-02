@@ -1,6 +1,18 @@
 ![https://github.com/blyamur/Montgo/blob/master/montgo/frwl33.png](https://github.com/blyamur/Montgo/blob/master/montgo/frwl33.png)
 
+This WordPress plugin monitors various web requests to your site in order to timely identify and stop the most obvious malicious attacks.
 
+### Installation Plugin
+
+1. Download the archive with the plugin file
+2. Unzip to a folder convenient for you, the contents of the archive
+3. Upload the plugin files "wordpress-firewall-re.php" to the <code>/wp-content/plugins/</code> directory
+4. Activate the plugin through the 'Plugins' screen in WordPress
+
+
+Originally developed by SEO Egghead and released as *WordPress Firewall*. - [www.seoegghead.com](https://www.seoegghead.com)
+
+Modified version page *WordPress Firewall Re*. - [blog.mons.ws](https://blog.mons.ws/?p=4354)
 
 *Thanks for reading :heart_eyes_cat:*
 > Спасибо за чтение!
