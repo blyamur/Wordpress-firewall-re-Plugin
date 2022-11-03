@@ -1,5 +1,7 @@
 # WordPress Plugin - WordPress Firewall Re
 
+![Light screenshot](https://github.com/blyamur/wordpress-firewall-re/blob/main/WP_F_SCREEN_1.jpg)
+
 This WordPress plugin monitors various web requests to your site in order to timely identify and stop the most obvious malicious attacks. 
 
 This is an updated and modified version of the once popular WordPress Firewall plugin by SEO Egghead, with some bug fixes, adaptation to the latest versions of PHP and WordPress. The general view has also been slightly changed, help has been added, multilingualism and other little things that make working with the plugin more convenient.
@@ -18,6 +20,9 @@ The WordPress Firewall Re plugin independently maintains a whitelist and blackli
 2. Unzip to a folder convenient for you, the contents of the archive
 3. Upload the plugin file "wordpress-firewall-re.php" to the <code>/wp-content/plugins/</code> directory
 4. Activate the plugin through the 'Plugins' screen in WordPress
+
+
+![Light screenshot](https://github.com/blyamur/wordpress-firewall-re/blob/main/WP_F_SCREEN.jpg)
 
 The setup doesn't have to be complicated. Moreover, after activating the plugin, you can leave everything as it is or, if you wish, set your own settings.
 
