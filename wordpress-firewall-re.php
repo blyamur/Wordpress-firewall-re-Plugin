@@ -75,6 +75,18 @@ if (determine_locale()=='ru_RU')
 	define('LANG_AUTHOR', 'Автор оригинального плагина');
 	define('LANG_OWN_RISK', 'Внимание! Используйте этот плагин только на свой страх и риск');
 	define('LANG_DONATE', 'Если хотите отблагодарить, можно купить мне чашечку кофе');
+	define('LANG_EM_ALERT_M', 'Оповещение от брандмауэра WordPress с ');
+	define('LANG_EM_FINDABLOCK', '<font color="red">обнаружил</font>  и заблокировал потенциальную атаку');
+	define('LANG_EM_ADDRESS', 'Адрес');
+	define('LANG_EM_WARNING', 'Внимание:&nbsp;URL может содержать опасный контент');
+	define('LANG_EM_AIP', 'Атакующий IP');
+	define('LANG_EM_IPINFO', 'Информация об IP адресе');
+	define('LANG_EM_PARAMATTACK', 'Параметры атаки');
+	define('LANG_EM_PATTACK', 'Возможная Атака');
+	define('LANG_EM_MORE', 'Подробнее об этой атаке можно почитать <a href="https://blog.mons.ws/?p=4354">тут</a><br /><br />
+			Если вы подозреваете, что это может быть ложной тревогой из-за того, что вы недавно сделали, попытайтесь это проверить, повторив эти действия. Если срабатывание действительно ложное, внесите его в белый список через ссылку «Добавить эту переменную в белый список». Это предотвратит в будущем ложные уведомления.');
+	define('LANG_EM_ADDWHTL', 'чтобы добавить в белый список');
+	define('LANG_EM_DISABLE', 'чтобы отключить получение этих писем');
 } else {
 	define('LANG_PN_FILTERS_DESC', 'The hacking attempts that this plugin catches are many, but generally fall into the following categories ');
 	define('LANG_PN_FILTERS', 'WordPress Firewall Re Plugin Security Filters');
@@ -139,6 +151,18 @@ if (determine_locale()=='ru_RU')
 	define('LANG_AUTHOR', 'Author of the original plugin');
 	define('LANG_OWN_RISK', 'Use this plugin at your own risk');
 	define('LANG_DONATE', 'If You want to Donate me, you can buy me a cup of coffee');
+	define('LANG_EM_ALERT_M', 'Alert from WordPress Firewall on ');
+	define('LANG_EM_FINDABLOCK', '<font color="red">detected</font> and blocked a potential attack');
+	define('LANG_EM_ADDRESS', 'Address');
+	define('LANG_EM_WARNING', 'Warning:&nbsp;URL may contain dangerous content');
+	define('LANG_EM_AIP', 'Attack IP');
+	define('LANG_EM_IPINFO', 'Information about the IP address');
+	define('LANG_EM_PARAMATTACK', 'Attack Params');
+	define('LANG_EM_PATTACK', 'Possible Attack');
+	define('LANG_EM_MORE', 'You can read more about this attack <a href="https://blog.mons.ws/?p=4354">here</a><br /><br />
+	If you suspect that this may be a false alarm due to something you\'ve done recently, try checking by repeating these steps. If the positive is indeed a false positive, whitelist it via the "Whitelist this variable" link. This will prevent false notifications in the future.');
+	define('LANG_EM_ADDWHTL', 'to whitelist');
+	define('LANG_EM_DISABLE', 'to stop receiving these emails');
 }
 
 if(!function_exists('array_diff_key')){
@@ -436,43 +460,41 @@ $bad_value = '', $attack_type = '', $attack_category = ''){
 		$whitelist_varibale_url = get_option('WP_firewall_plugin_url') 
 		. '&set_whitelist_variable=' . $bad_variable ;
 			
-		$message =<<<EndMessage
-		<h3>WordPress Firewall Re <font color="red">обнаружил и заблокировал</font>потенциальную атаку!</h3>
+		$message ='
+		<h3>WordPress Firewall Re '.LANG_EM_FINDABLOCK.'
 		<table border="0" cellpadding="5">
 		<tr>
-		<td align="right"><b>Адрес:&nbsp;&nbsp;</b></td>
-		<td>$offending_url <br />
-		<small>Внимание:&nbsp;URL может содержать опасный контент!</small>
+		<td align="right"><b>'.LANG_EM_ADDRESS.':&nbsp;&nbsp;</b></td>
+		<td>'.$offending_url.' <br />
+		<small>'.LANG_EM_WARNING.'!</small>
 		</td>
 		</tr>
 		<tr>
-		<td align="right"><b>Атакующий IP:&nbsp;&nbsp;</b></td>
-		<td>$offender_ip
-		<a href="https://whois.ru/?domain=$offender_ip">[ Информация об IP адресе ]</a>
+		<td align="right"><b>'.LANG_EM_AIP.':&nbsp;&nbsp;</b></td>
+		<td>'.$offender_ip.'
+		<a href="https://whois.ru/?domain='.$offender_ip.'">[ '.LANG_EM_IPINFO.' ]</a>
 		</td>
 		</tr>
 		<tr>
 		<td align="right">
-		<b>Параметры атаки:&nbsp;&nbsp;</b>
+		<b>'.LANG_EM_PARAMATTACK.':&nbsp;&nbsp;</b>
 		</td>
-		<td><font color="red"><b> $bad_variable = $bad_value </b></font></td>
+		<td><font color="red"><b> '.$bad_variable.' = '.$bad_value.' </b></font></td>
 		</tr>
 		</table>
 		<br />
 		<table>
 		<tr>
 		<td align="left"> 
-		Возможная Атака: "$attack_category."<br /><br />
-		Подробнее об этой атаке можно почитать <a href="https://blog.mons.ws/?p=4354">тут</a><br /><br />
-		
-		Если вы подозреваете, что это может быть ложной тревогой из-за того, что вы недавно сделали, попытайтесь подтвердите, повторив эти действия. Если да, внесите его в белый список через ссылку «Добавить эту переменную в белый список». Это предотвратит будущие ложные уведомления.
+		'.LANG_EM_PATTACK.': "'.$attack_category.'"<br /><br />
+		'.LANG_EM_MORE.'
 		<br /><br />
-		<a href="$whitelist_varibale_url">Нижмите тут</a> чтобы добавить в белый список.
+		<a href="'.$whitelist_varibale_url.'"> '.LANG_CLICK_HERE.'</a> '.LANG_EM_ADDWHTL.'.
 		<br /> 
-		<a href="$turn_off_email_url ">Нижмите тут</a> Чтобы отключить эти письма.
+		<a href="'.$turn_off_email_url.'">'.LANG_CLICK_HERE.'</a> '.LANG_EM_DISABLE.'.
 		</td>
 		<tr>
-		<td>$suppress_message</td>
+		<td>'.$suppress_message.'</td>
 		</tr>
 		</table>
 		<br />
@@ -482,17 +504,15 @@ $bad_value = '', $attack_type = '', $attack_category = ''){
 	href="https://blog.mons.ws/?p=4354" 
 		style="text-decoration:none;" target="_blank">
 		<img src=
-	"http://www.seoegghead.com/cms_pics/seoegghead_embedded_smaller_faded.png"
+	"https://blog.mons.ws/wp-content/uploads/info.png"
 		border="0" />
 		</a>
 		<br />
 		<br />
-		</div>
-		
-EndMessage;
+		</div>';
 	
 		$address = get_option('WP_firewall_email_address');
-		$subject = 'Alert from WordPress Firewall on ' 
+		$subject = LANG_EM_ALERT_M 
 		. get_option('siteurl');
 		$header = "Content-Type: text/html\r\n";		
 		$header .= "From: " . $address . "\r\n";		
